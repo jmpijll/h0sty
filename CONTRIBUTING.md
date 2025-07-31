@@ -31,8 +31,8 @@ Enhancement suggestions are welcome! Please provide:
 ### Development Setup
 
 1. **Prerequisites**
-   - macOS 13.0 (Ventura) or later
-   - Xcode 15.0 or later
+   - macOS 15.0 (Sequoia) or later
+   - Xcode 16.0 or later
    - Git
 
 2. **Fork and Clone**
