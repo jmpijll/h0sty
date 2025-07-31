@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2025-07-31
+
+### Changed
+- **BREAKING**: Minimum macOS version requirement increased from 13.0 (Ventura) to 15.0 (Sequoia)
+- Updated to support modern SwiftUI symbol effects and animations
+- Project now requires Xcode 16.0+ for development
+
+### Technical Updates
+- **symbolEffect(.rotate)**: Now fully supported with macOS 15.0+ requirement
+- **Modern Animations**: Enhanced animation capabilities with latest SwiftUI features
+- **Developer Experience**: Improved with latest Xcode and macOS SDK features
+
+### Rationale
+This update enables the use of cutting-edge SwiftUI features including:
+- Advanced symbol effects with `.symbolEffect(.rotate, isActive:)` 
+- Enhanced animation performance and capabilities
+- Better native macOS integration
+- Future-proofing for upcoming SwiftUI features
+
 ## [0.2.0] - 2025-07-31
 
 ### Added
