@@ -1,0 +1,44 @@
+# H0sty Development Plan
+
+Refer to REQUIREMENTS.md for technical specifications.
+
+### Phase 0: Project Initialization (v0.1.0)
+* **Step 0.1:** Create a new public GitHub repository named `hosty-app`.
+* **Step 0.2:** Initialize a new Swift/SwiftUI macOS project in Xcode.
+* **Step 0.3:** Add the `Planfile`, `REQUIREMENTS.md`, and `CHANGELOG.md` to the project root.
+* **Step 0.4:** Make the initial commit with the message "feat: Initial project structure and planning files" and push to the main branch.
+* **Verification:** The Xcode project is created and all planning files are on GitHub.
+
+### Phase 1: Read-Only Core (v0.2.0)
+* **Step 1.1:** Implement the logic to read the `/etc/hosts` file at app launch. Handle potential read errors gracefully.
+* **Step 1.2:** Create a data model for a host entry (e.g., a struct with `ip`, `hostname`, `isEnabled`).
+* **Step 1.3:** Design and implement the main SwiftUI view to display the parsed host entries in a `List`. Disabled (commented) entries should be visually distinct (e.g., greyed out).
+* **Step 1.4:** Test the UI with a sample hosts file containing various valid and commented-out entries.
+* **Verification:** The app launches, reads `/etc/hosts`, and correctly displays its contents.
+* **Changelog & Commit:** Update `CHANGELOG.md` for v0.2.0. Commit with "feat: Implement read-only view of hosts file".
+
+### Phase 2: Core Editing Functionality (v0.5.0)
+* **Step 2.1:** Set up the privileged helper tool using the `SMJobBless` API. This is a critical step. Create a separate target for the helper tool.
+* **Step 2.2:** Implement the communication channel (XPC) between the main app and the helper tool.
+* **Step 2.3:** Implement the logic within the helper tool to add, delete, and comment/uncomment lines in `/etc/hosts`. The helper will receive commands from the main app and perform the file I/O.
+* **Step 2.4:** Implement the UI controls in the main app (e.g., buttons for 'Add', 'Delete', 'Toggle') that send commands to the helper tool.
+* **Step 2.5:** Test the full loop: clicking a UI button triggers the standard admin password prompt (for helper installation/authorization), sends the command to the helper, modifies the file, and the UI updates to reflect the change.
+* **Verification:** Users can add, delete, and toggle host entries. Changes persist and are correctly reflected in `/etc/hosts`.
+* **Changelog & Commit:** Update `CHANGELOG.md` for v0.5.0. Commit with "feat: Implement core editing via privileged helper tool".
+
+### Phase 3: UI/UX Refinement & Features (v0.8.0)
+* **Step 3.1:** Refine the UI to align perfectly with macOS HIG. Add a proper app icon. Implement polished animations and transitions.
+* **Step 3.2:** Add an inline editing feature. Double-clicking an entry should allow the user to edit the IP and hostname directly in the list.
+* **Step 3.3:** Implement entry grouping. Allow users to create a named group and drag entries into it. Add a master toggle to enable/disable all entries in a group.
+* **Step 3.4:** Implement robust error handling and user feedback (e.g., show an alert if a save fails or input is invalid).
+* **Verification:** The UI is polished and professional. Grouping and inline editing work flawlessly.
+* **Changelog & Commit:** Update `CHANGELOG.md` for v0.8.0. Commit with "feat: Refine UI and add entry grouping".
+
+### Phase 4: Advanced Mode & Release (v1.0.0)
+* **Step 4.1:** Implement the "Advanced Mode" view. This view will present the `/etc/hosts` file in a raw text editor with syntax highlighting.
+* **Step 4.2:** Ensure changes made in the Advanced Mode are saved correctly via the helper tool and the main list view updates accordingly (and vice-versa).
+* **Step 4.3:** Add a simple Settings/Preferences window (e.g., for launch options, UI settings).
+* **Step 4.4:** Perform final testing. Write a `README.md` for the GitHub repository explaining what H0sty is, how to use it, and how to build it from source.
+* **Step 4.5:** Tag the release as v1.0.0.
+* **Verification:** The app is feature-complete, stable, and ready for a public release.
+* **Changelog & Commit:** Finalize `CHANGELOG.md` for v1.0.0. Commit with "feat: Add advanced mode and prepare for v1.0.0 release".
