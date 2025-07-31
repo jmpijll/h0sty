@@ -154,7 +154,7 @@ struct HostEntryRow: View {
                 if let comment = entry.comment, !comment.isEmpty {
                     Text(comment)
                         .font(.caption)
-                        .foregroundColor(.tertiary)
+                        .foregroundColor(.secondary.opacity(0.7))
                         .italic()
                 }
             }
