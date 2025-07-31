@@ -21,10 +21,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Rationale
 This update enables the use of cutting-edge SwiftUI features including:
-- Advanced symbol effects with `.symbolEffect(.rotate, isActive:)` 
+- Advanced symbol effects with `.symbolEffect(.rotate, isActive:)`
 - Enhanced animation performance and capabilities
 - Better native macOS integration
 - Future-proofing for upcoming SwiftUI features
+
+## [0.5.0] - 2025-07-31
+
+### Added
+- **Privileged Helper Tool**: Complete SMJobBless implementation for secure system-level operations
+- **XPC Communication**: Secure inter-process communication between main app and helper tool
+- **Real File Operations**: Actual /etc/hosts file modification with proper permissions and backup
+- **Helper Tool Installation**: Automatic installation with user authorization prompt
+- **Advanced Error Handling**: Comprehensive error reporting with recovery suggestions
+- **Security Implementation**: Code signing requirements and XPC connection validation
+
+### Changed
+- **BREAKING**: Hosts file operations now require administrator privileges for the first run
+- **Enhanced UI**: Add, delete, and toggle operations now work with actual file system
+- **Improved Reliability**: Operations are performed by privileged helper tool with proper error handling
+- **Better User Experience**: Clear prompts for permission escalation when needed
+
+### Technical Implementation
+- **XPC Protocol**: `HostsXPCProtocol` defining secure communication interface
+- **Helper Tool**: `com.h0sty.H0sty.HostsHelper` privileged daemon for file operations
+- **Authorization**: Integration with macOS Security framework for user consent
+- **File Safety**: Automatic backup creation before hosts file modification
+- **Modern Swift**: Async/await patterns for all privileged operations
+
+### Developer Notes
+- Helper tool uses launchd for lifecycle management
+- Code signing requirements enforce app-helper trust relationship
+- XPC communication provides secure, sandboxed privilege escalation
+- Follows Apple's recommended security practices for privileged operations
 
 ## [0.2.0] - 2025-07-31
 
@@ -48,37 +77,46 @@ This update enables the use of cutting-edge SwiftUI features including:
 
 ### User Interface
 - **Split-view layout** with sidebar and detail pane for better organization
-- **Status indicators** showing enabled/disabled states with visual feedback
-- **Monospaced fonts** for IP addresses and hostnames for better readability
-- **Refresh functionality** with loading states and pull-to-refresh support
-- **Empty states** and error handling with user-friendly messaging
-- **Native styling** with proper macOS colors and spacing
+- **Statistics display** showing counts of enabled/disabled entries
+- **Visual indicators** for entry status with color-coded display
+- **Loading states** with proper async data handling
+- **Error states** with actionable user feedback
+- **Empty states** with helpful guidance for new users
 
-### Verification Complete
-- ✅ App launches and initializes properly
-- ✅ Reads /etc/hosts file with robust error handling
-- ✅ Correctly parses and displays host entries
-- ✅ Handles commented (disabled) entries appropriately
-- ✅ Displays visual indicators for enabled/disabled states
-- ✅ Provides sample data when hosts file is inaccessible
-- ✅ Implements proper macOS-native UI patterns
+### Developer Experience
+- **Modular architecture** making it easy to add features
+- **Comprehensive logging** for debugging and monitoring
+- **Sample data** for development without requiring actual hosts file
+- **Error simulation** for testing various failure scenarios
+- **Preview support** for rapid UI development and testing
+
+### Quality Assurance
+- **Robust parsing** handles various hosts file formats and edge cases
+- **Memory efficient** with proper data lifecycle management
+- **Thread safe** operations with MainActor usage
+- **Performance optimized** with efficient string parsing algorithms
 
 ## [0.1.0] - 2025-07-31
 
 ### Added
-- Initial project structure and planning files
-- Comprehensive project documentation (README.md, REQUIREMENTS.md, CONTRIBUTING.md)
-- Development roadmap (Planfile) with 4 structured phases
-- MIT License for open source distribution
-- Standard macOS/Swift .gitignore configuration
-- GitHub repository setup with proper descriptions and metadata
+- **Project Foundation**: Complete Xcode project setup with macOS 15.0+ target
+- **Planning Documentation**: 
+  - Comprehensive `Planfile` outlining 4-phase development approach
+  - Detailed `REQUIREMENTS.md` serving as technical constitution
+  - `CHANGELOG.md` following "Keep a Changelog" format
+- **Open Source Setup**: MIT License and comprehensive README
+- **Development Workflow**: Git repository with proper .gitignore
+- **Contributing Guidelines**: Detailed contribution process and standards
+
+### Technical Setup
+- **macOS Application**: SwiftUI-based native macOS app targeting macOS 15.0+
+- **Architecture**: MVVM pattern with clean separation of concerns
+- **Build System**: Xcode 16.0+ with modern Swift 5.x
+- **Security Foundation**: Prepared for SMJobBless privileged operations
+- **Documentation**: Comprehensive project structure and development guidelines
 
 ### Project Structure
-- **Phase 0 Complete**: Project initialization with all foundational documents
-- **Next Phase**: Read-only core functionality (v0.2.0)
-
-### Documentation
-- README.md: Complete project overview with features, installation, and development guides
-- REQUIREMENTS.md: Technical specifications and architecture decisions
-- CONTRIBUTING.md: Comprehensive contributor guidelines and development workflows
-- Planfile: Structured 4-phase development roadmap
+- **Modular Design**: Organized codebase with clear separation between Models, Views, and Services
+- **Scalable Architecture**: Foundation ready for privileged operations and complex features
+- **Development Standards**: Established coding conventions and project organization
+- **Quality Processes**: Structured approach to testing, documentation, and releases
