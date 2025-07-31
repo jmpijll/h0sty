@@ -7,6 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2025-07-31
+
+### Added
+- **Complete macOS SwiftUI application structure** with proper project organization
+- **HostEntry data model** with parsing capabilities for hosts file entries
+- **HostsManager service** with async file reading and error handling
+- **Modern SwiftUI interface** with NavigationSplitView and List components
+- **Real-time hosts file parsing** that handles comments, disabled entries, and various formats
+- **Native macOS design** following Apple's Human Interface Guidelines
+- **Comprehensive error handling** with user-friendly error messages
+- **Sample data fallback** for development and testing scenarios
+
+### Technical Implementation
+- **MVVM Architecture**: Clean separation between Models, Views, and Services
+- **Async/Await**: Modern Swift concurrency for file operations
+- **ObservableObject**: Reactive data binding with @Published properties
+- **Identifiable Protocol**: Efficient SwiftUI List rendering with UUID-based identification
+- **OSLog Integration**: Structured logging for debugging and monitoring
+- **SwiftUI Previews**: Multiple preview configurations for development
+
+### User Interface
+- **Split-view layout** with sidebar and detail pane for better organization
+- **Status indicators** showing enabled/disabled states with visual feedback
+- **Monospaced fonts** for IP addresses and hostnames for better readability
+- **Refresh functionality** with loading states and pull-to-refresh support
+- **Empty states** and error handling with user-friendly messaging
+- **Native styling** with proper macOS colors and spacing
+
+### Verification Complete
+- ✅ App launches and initializes properly
+- ✅ Reads /etc/hosts file with robust error handling
+- ✅ Correctly parses and displays host entries
+- ✅ Handles commented (disabled) entries appropriately
+- ✅ Displays visual indicators for enabled/disabled states
+- ✅ Provides sample data when hosts file is inaccessible
+- ✅ Implements proper macOS-native UI patterns
+
 ## [0.1.0] - 2025-07-31
 
 ### Added
