@@ -6,7 +6,7 @@ This document outlines the technical requirements, stack, and constraints for th
 
 * **Language:** Swift 5.x
 * **UI Framework:** SwiftUI for the main interface, utilizing AppKit where necessary for advanced integrations.
-* **Target OS:** macOS 13.0 (Ventura) and later.
+* **Target OS:** macOS 15.0 (Sequoia) and later.
 * **Architecture:** A modular architecture (e.g., MVVM) to separate concerns (UI, business logic, data).
 
 ## 2. Core Features
