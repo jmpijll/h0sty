@@ -14,6 +14,7 @@
 		E0A1B1EF2C614D5200123456 /* HostEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A1B1EE2C614D5200123456 /* HostEntry.swift */; };
 		E0A1B1F12C614D5200123456 /* HostsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A1B1F02C614D5200123456 /* HostsManager.swift */; };
 		E0A1B1F32C614D5200123456 /* HostsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A1B1F22C614D5200123456 /* HostsListView.swift */; };
+		E0A1B1F42C614D5200123456 /* AddHostEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A1B1F52C614D5200123456 /* AddHostEntryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E0A1B1EE2C614D5200123456 /* HostEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEntry.swift; sourceTree = "<group>"; };
 		E0A1B1F02C614D5200123456 /* HostsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostsManager.swift; sourceTree = "<group>"; };
 		E0A1B1F22C614D5200123456 /* HostsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostsListView.swift; sourceTree = "<group>"; };
+		E0A1B1F52C614D5200123456 /* AddHostEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHostEntryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				E0A1B1F22C614D5200123456 /* HostsListView.swift */,
+				E0A1B1F52C614D5200123456 /* AddHostEntryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			files = (
 				E0A1B1F12C614D5200123456 /* HostsManager.swift in Sources */,
 				E0A1B1F32C614D5200123456 /* HostsListView.swift in Sources */,
+				E0A1B1F42C614D5200123456 /* AddHostEntryView.swift in Sources */,
 				E0A1B1E22C614D5000123456 /* ContentView.swift in Sources */,
 				E0A1B1EF2C614D5200123456 /* HostEntry.swift in Sources */,
 				E0A1B1E02C614D5000123456 /* H0styApp.swift in Sources */,
@@ -262,7 +266,7 @@
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DIRECT_OBJC_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
