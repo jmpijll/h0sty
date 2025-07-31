@@ -154,7 +154,7 @@ class HostsManager: ObservableObject {
     }
     
     // MARK: - Editing Operations (Phase 2)
-    // These methods will be implemented with privileged helper tool communication
+    // These methods use the privileged helper tool for actual file modification
     
     /// Add a new host entry
     func addEntry(_ entry: HostEntry) async throws {
@@ -174,14 +174,25 @@ class HostsManager: ObservableObject {
         lastError = nil
         
         do {
-            // TODO: Replace with privileged helper tool communication
-            // For now, simulate the operation with a delay
-            try await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
+            // Ensure helper tool is installed
+            let helperManager = PrivilegedHelperManager.shared
+            if !helperManager.isHelperInstalled {
+                try await helperManager.installHelperTool()
+            }
             
-            // Add to local array (temporary - will be replaced with actual file modification)
-            hostEntries.append(entry)
+            // Use XPC to add the entry
+            let xpcClient = try helperManager.getXPCClient()
+            try await xpcClient.addHostEntry(entry)
+            
+            // Refresh the hosts file to update local state
+            await loadHostsFile()
+            
             logger.info("Successfully added entry: \(entry.hostname)")
             
+        } catch let helperError as HostsHelperError {
+            let hostsError = HostsManagerError.operationFailed(helperError.localizedDescription)
+            lastError = hostsError
+            throw hostsError
         } catch {
             let hostsError = HostsManagerError.operationFailed(error.localizedDescription)
             lastError = hostsError
@@ -199,14 +210,25 @@ class HostsManager: ObservableObject {
         lastError = nil
         
         do {
-            // TODO: Replace with privileged helper tool communication
-            // For now, simulate the operation with a delay
-            try await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
+            // Ensure helper tool is installed
+            let helperManager = PrivilegedHelperManager.shared
+            if !helperManager.isHelperInstalled {
+                try await helperManager.installHelperTool()
+            }
             
-            // Remove from local array (temporary - will be replaced with actual file modification)
-            hostEntries.removeAll { $0.id == entry.id }
+            // Use XPC to remove the entry
+            let xpcClient = try helperManager.getXPCClient()
+            try await xpcClient.removeHostEntry(ip: entry.ip, hostname: entry.hostname)
+            
+            // Refresh the hosts file to update local state
+            await loadHostsFile()
+            
             logger.info("Successfully deleted entry: \(entry.hostname)")
             
+        } catch let helperError as HostsHelperError {
+            let hostsError = HostsManagerError.operationFailed(helperError.localizedDescription)
+            lastError = hostsError
+            throw hostsError
         } catch {
             let hostsError = HostsManagerError.operationFailed(error.localizedDescription)
             lastError = hostsError
@@ -224,22 +246,25 @@ class HostsManager: ObservableObject {
         lastError = nil
         
         do {
-            // TODO: Replace with privileged helper tool communication
-            // For now, simulate the operation with a delay
-            try await Task.sleep(nanoseconds: 300_000_000) // 0.3 seconds
-            
-            // Toggle in local array (temporary - will be replaced with actual file modification)
-            if let index = hostEntries.firstIndex(where: { $0.id == entry.id }) {
-                let updatedEntry = HostEntry(
-                    ip: entry.ip,
-                    hostname: entry.hostname,
-                    comment: entry.comment,
-                    isEnabled: !entry.isEnabled
-                )
-                hostEntries[index] = updatedEntry
+            // Ensure helper tool is installed
+            let helperManager = PrivilegedHelperManager.shared
+            if !helperManager.isHelperInstalled {
+                try await helperManager.installHelperTool()
             }
-            logger.info("Successfully toggled entry: \(entry.hostname) - now \(entry.isEnabled ? "disabled" : "enabled")")
             
+            // Use XPC to toggle the entry
+            let xpcClient = try helperManager.getXPCClient()
+            try await xpcClient.toggleHostEntry(ip: entry.ip, hostname: entry.hostname)
+            
+            // Refresh the hosts file to update local state
+            await loadHostsFile()
+            
+            logger.info("Successfully toggled entry: \(entry.hostname)")
+            
+        } catch let helperError as HostsHelperError {
+            let hostsError = HostsManagerError.operationFailed(helperError.localizedDescription)
+            lastError = hostsError
+            throw hostsError
         } catch {
             let hostsError = HostsManagerError.operationFailed(error.localizedDescription)
             lastError = hostsError
