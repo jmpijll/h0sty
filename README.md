@@ -8,7 +8,7 @@
 
 [![Swift 5.x](https://img.shields.io/badge/Swift-5.x-orange.svg)](https://swift.org)
 [![SwiftUI](https://img.shields.io/badge/SwiftUI-blue.svg)](https://developer.apple.com/xcode/swiftui/)
-[![macOS 13.0+](https://img.shields.io/badge/macOS-13.0+-black.svg)](https://www.apple.com/macos/)
+[![macOS 15.0+](https://img.shields.io/badge/macOS-15.0+-black.svg)](https://www.apple.com/macos/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/jamievanderpijll/h0sty.svg)](https://github.com/jamievanderpijll/h0sty/releases)
 
@@ -49,7 +49,7 @@ H0sty is a native macOS application that provides an intuitive, secure way to ma
 
 ## Requirements
 
-- **macOS**: 13.0 (Ventura) or later
+- **macOS**: 15.0 (Sequoia) or later
 - **Architecture**: Intel (x86_64) and Apple Silicon (arm64) supported
 
 ## Installation
@@ -115,7 +115,7 @@ H0sty is built with modern Swift and SwiftUI, following a clean, modular archite
 - **UI Framework**: SwiftUI with AppKit integration where needed
 - **Architecture**: MVVM (Model-View-ViewModel)
 - **Security**: SMJobBless privileged helper tool
-- **Target**: macOS 13.0+
+- **Target**: macOS 15.0+
 
 ### Project Structure
 ```
@@ -132,7 +132,7 @@ H0sty/
 ```
 
 ### Building
-1. **Prerequisites**: Xcode 15.0+ and macOS 13.0+
+1. **Prerequisites**: Xcode 16.0+ and macOS 15.0+
 2. **Clone**: `git clone https://github.com/jamievanderpijll/h0sty.git`
 3. **Open**: `open H0sty.xcodeproj`
 4. **Build**: Select "H0sty" scheme and build (⌘+B)
@@ -170,7 +170,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 See the [Planfile](Planfile) for detailed development phases:
 
 - **Phase 0**: ✅ Project initialization and planning
-- **Phase 1**: 🚧 Read-only core functionality
+- **Phase 1**: ✅ Read-only core functionality
 - **Phase 2**: 📋 Core editing functionality
 - **Phase 3**: 🎨 UI/UX refinement and advanced features
 - **Phase 4**: 🚀 Advanced mode and v1.0.0 release
